@@ -3,14 +3,11 @@ library(shiny.react)
 library(shiny.fluent)
 library(tidyverse)
 
-source(here::here("R/functions.R"))
+source("functions.R")
 
-sanger_accessions_selection <- readRDS(
-  here::here("data/sanger_accessions_selection.RDS"))
-ncbi_accepted_names_map <- readRDS(
-  here::here("data/ncbi_accepted_names_map.RDS"))
-match_results_resolved_all <- readRDS(
-  here::here("data/match_results_resolved_all.RDS"))
+sanger_accessions_selection <- readRDS("data/sanger_accessions_selection.RDS")
+ncbi_accepted_names_map <- readRDS("data/ncbi_accepted_names_map.RDS")
+match_results_resolved_all <- readRDS("data/match_results_resolved_all.RDS")
 
 species <- sort(sanger_accessions_selection$species)
 
