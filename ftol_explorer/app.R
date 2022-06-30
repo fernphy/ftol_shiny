@@ -3,6 +3,7 @@ library(shiny.react)
 library(shiny.fluent)
 library(tidyverse)
 library(assertr)
+library(markdown)
 
 source("functions.R")
 
