@@ -59,6 +59,18 @@
       "Hash": "32e79b908fda56ee57fe518a8d37b864",
       "Requirements": []
     },
+    "ape": {
+      "Package": "ape",
+      "Version": "5.6-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "894108412a7ec23d5de85cdcce871c8b",
+      "Requirements": [
+        "Rcpp",
+        "lattice",
+        "nlme"
+      ]
+    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.1",
@@ -67,6 +79,18 @@
       "Hash": "e8a22846fff485f0be3770c2da758713",
       "Requirements": [
         "sys"
+      ]
+    },
+    "assertr": {
+      "Package": "assertr",
+      "Version": "2.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "38c61c51fa8311904551d58895da2858",
+      "Requirements": [
+        "MASS",
+        "dplyr",
+        "rlang"
       ]
     },
     "assertthat": {
@@ -398,6 +422,22 @@
       "Repository": "CRAN",
       "Hash": "7c89603d81793f0d5486d91ab1fc6f1d",
       "Requirements": []
+    },
+    "ftolr": {
+      "Package": "ftolr",
+      "Version": "1.1.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ftolr",
+      "RemoteUsername": "fernphy",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "b508d1ebdba9b3666ad5cf38dc2d898efa974480",
+      "Hash": "013223ff83f7dbe887c7419f3d5bccef",
+      "Requirements": [
+        "ape",
+        "assertthat"
+      ]
     },
     "gargle": {
       "Package": "gargle",
