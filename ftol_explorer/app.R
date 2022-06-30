@@ -6,11 +6,9 @@ library(assertr)
 
 source("functions.R")
 
-sanger_accessions_selection <- readRDS("data/sanger_accessions_selection.RDS")
-ncbi_accepted_names_map <- readRDS("data/ncbi_accepted_names_map.RDS")
 match_results_resolved_all <- readRDS("data/match_results_resolved_all.RDS")
 
-species <- sort(sanger_accessions_selection$species)
+species <- sort(ftolr::accessions_wide$species)
 
 species_options <- NULL
 for (i in seq_along(species)) {
