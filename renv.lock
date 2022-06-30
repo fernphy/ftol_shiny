@@ -525,16 +525,6 @@
         "vctrs"
       ]
     },
-    "here": {
-      "Package": "here",
-      "Version": "1.0.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "24b224366f9c2e7534d2344d10d59211",
-      "Requirements": [
-        "rprojroot"
-      ]
-    },
     "highr": {
       "Package": "highr",
       "Version": "0.9",
@@ -781,6 +771,14 @@
         "askpass"
       ]
     },
+    "packrat": {
+      "Package": "packrat",
+      "Version": "0.8.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d84055adcb6bb1f4f0ce8c5f235bc328",
+      "Requirements": []
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.7.0",
@@ -985,13 +983,21 @@
         "yaml"
       ]
     },
-    "rprojroot": {
-      "Package": "rprojroot",
-      "Version": "2.0.3",
+    "rsconnect": {
+      "Package": "rsconnect",
+      "Version": "0.8.26",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1de7ab598047a87bba48434ba35d497d",
-      "Requirements": []
+      "Hash": "c274aa0076b1892bf702de3257e67275",
+      "Requirements": [
+        "curl",
+        "digest",
+        "jsonlite",
+        "openssl",
+        "packrat",
+        "rstudioapi",
+        "yaml"
+      ]
     },
     "rstudioapi": {
       "Package": "rstudioapi",
