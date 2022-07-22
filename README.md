@@ -6,4 +6,4 @@ For more information about FTOL, see https://fernphy.github.io.
 
 ## License
 
-Code: MIT
+Code: [MIT](LICENSE)
