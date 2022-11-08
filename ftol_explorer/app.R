@@ -4,10 +4,11 @@ library(shiny.fluent)
 library(tidyverse)
 library(assertr)
 library(markdown)
+library(ftolr)
+
+# Setup ----
 
 source("functions.R")
-
-match_results_resolved_all <- readRDS("data/match_results_resolved_all.RDS")
 
 species <- sort(ftolr::accessions_wide$species)
 
@@ -23,6 +24,8 @@ data_table_settings <- list(
       searching = FALSE
     )
 
+# UI ----
+
 ui <- fluidPage(
 
   titlePanel("FTOL explorer"),
@@ -31,6 +34,7 @@ ui <- fluidPage(
 
     # Sidebar with input selection box for species
     sidebarPanel(
+      h4(paste0("FTOL v", ftolr::ft_data_ver())),
       # Use combo-box input for autocomplete
       ComboBox.shinyInput("combo", value = list(text = species[[1]]),
         options = species_options, allowFreeform = TRUE
@@ -70,6 +74,8 @@ ui <- fluidPage(
   )
 )
 
+# server ----
+
 server <- function(input, output) {
 
   data_lists <- reactive({
@@ -77,7 +83,7 @@ server <- function(input, output) {
     species_select = input$combo$text,
     accessions_long = ftolr::accessions_long,
     accessions_wide = ftolr::accessions_wide,
-    match_results_resolved_all = match_results_resolved_all)
+    match_results_resolved_all = ftolr::ftol_match_results)
   })
 
   output$acc_data <- renderDataTable(
