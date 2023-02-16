@@ -87,19 +87,19 @@ server <- function(input, output) {
   })
 
   output$acc_data <- renderDataTable(
-    data_lists()$acc_data,
+    data_lists()[["acc_data"]],
     options = data_table_settings,
     escape = FALSE
   )
 
   output$voucher_data <- renderDataTable(
-    data_lists()$voucher_data,
+    data_lists()[["voucher_data"]],
     options = data_table_settings,
     escape = FALSE
   )
 
   output$taxonomy_data <- renderDataTable(
-    data_lists()$taxonomy_data,
+    data_lists()[["taxonomy_data"]],
     options = data_table_settings,
     escape = FALSE
   )
