@@ -24,6 +24,21 @@ data_table_settings <- list(
       searching = FALSE
     )
 
+# tree link
+# For some reason using the JSON config directly in taxonium isn't working,
+# so add it to the URL (custom config option 1)
+# https://docs.taxonium.org/en/latest/advanced.html#custom-configuration
+config_url <- "https://raw.githubusercontent.com/fernphy/ftol_vis/main/_targets/user/taxonium/ftol_config.json" # nolint
+
+config_string <- jsonlite::read_json(config_url) |>
+  jsontools::format_json(auto_unbox = TRUE) |>
+  as.character() |>
+  stringr::str_remove_all("\\[|\\]")
+
+base_url <- "https://taxonium.org/?treeUrl=https%3A%2F%2Fraw.githubusercontent.com%2Ffernphy%2Fftol_vis%2Fmain%2F_targets%2Fuser%2Ftaxonium%2Fftol_tree.tree&ladderizeTree=true&treeType=nwk&metaUrl=https%3A%2F%2Fraw.githubusercontent.com%2Ffernphy%2Fftol_vis%2Fmain%2F_targets%2Fuser%2Ftaxonium%2Fftol_data.csv&metaType=meta_csv&xType=x_dist&color=%7B%22field%22%3A%22meta_family%22%7D" # nolint
+
+base_url <- glue::glue("{base_url}&config={config_string}")
+
 # UI ----
 
 ui <- fluidPage(
@@ -63,6 +78,9 @@ ui <- fluidPage(
               markdown("### Taxonomy"),
               dataTableOutput("taxonomy_data")
             )
+          ),
+          fluidRow(
+            h3(uiOutput("tree_url"))
           )
         ),
         tabPanel(
@@ -103,6 +121,16 @@ server <- function(input, output) {
     options = data_table_settings,
     escape = FALSE
   )
+
+  output$tree_url <- renderUI({
+    a(
+      "View species in tree",
+      href = make_tree_search_url(
+        base_url = base_url,
+        species = input$combo$text
+      )
+    )
+  })
 
 }
 

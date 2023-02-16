@@ -80,3 +80,16 @@ get_acc_info <- function(species_select,
     taxonomy_data = taxonomy_data
   )
 }
+
+#' Make a URL string for searching a taxonium tree
+#' @param base_url Basic URL for the taxonium tree
+#' @param species Name of species to search
+#' @return Link with URL to tree with search results for species
+make_tree_search_url <- function(base_url, species) {
+paste0(
+    base_url,
+    "&srch=%5B%7B%22key%22%3A%22aa1%22%2C%22type%22%3A%22name%22%2C%22method%22%3A%22text_match%22%2C%22text%22%3A%22", # nolint
+    species,
+    "%22%2C%22gene%22%3A%22S%22%2C%22position%22%3A484%2C%22new_residue%22%3A%22any%22%2C%22min_tips%22%3A0%7D%5D&zoomToSearch=0" # nolint
+  )
+}
