@@ -1,4 +1,3 @@
-library(jsontools)
 library(shiny)
 library(shiny.react)
 library(shiny.fluent)
@@ -32,7 +31,7 @@ data_table_settings <- list(
 config_url <- "https://raw.githubusercontent.com/fernphy/ftol_vis/main/_targets/user/taxonium/ftol_config.json" # nolint
 
 config_string <- jsonlite::read_json(config_url) |>
-  jsontools::format_json(auto_unbox = TRUE) |>
+  jsonlite::toJSON(auto_unbox = TRUE) |>
   as.character() |>
   stringr::str_remove_all("\\[|\\]")
 
