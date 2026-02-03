@@ -18,11 +18,11 @@ for (i in seq_along(species)) {
 }
 
 data_table_settings <- list(
-      dom = "t",
-      ordering = FALSE,
-      paging = FALSE,
-      searching = FALSE
-    )
+  dom = "t",
+  ordering = FALSE,
+  paging = FALSE,
+  searching = FALSE
+)
 
 # tree link
 # For some reason using the JSON config directly in taxonium isn't working,
@@ -42,39 +42,34 @@ base_url <- glue::glue("{base_url}&config={config_string}")
 # UI ----
 
 ui <- fluidPage(
-
   titlePanel("FTOL explorer"),
 
   sidebarLayout(
-
     # Sidebar with input selection box for species
     sidebarPanel(
       h4(paste0("FTOL v", ftolr::ft_data_ver())),
       # Use combo-box input for autocomplete
-      ComboBox.shinyInput("combo", value = list(text = species[[1]]),
-        options = species_options, allowFreeform = TRUE
+      ComboBox.shinyInput(
+        "combo",
+        value = list(text = species[[1]]),
+        options = species_options,
+        allowFreeform = TRUE
       )
     ),
     # Main panel with output in three panels
     mainPanel(
-
       tabsetPanel(
         tabPanel(
           "Data",
           fluidRow(
-            column(6,
-              markdown("### Accession"),
-              dataTableOutput("acc_data")
-            )
+            column(6, markdown("### Accession"), dataTableOutput("acc_data"))
           ),
           fluidRow(
-            column(8,
-              markdown("### Voucher"),
-              dataTableOutput("voucher_data")
-            )
+            column(8, markdown("### Voucher"), dataTableOutput("voucher_data"))
           ),
           fluidRow(
-            column(12,
+            column(
+              12,
               markdown("### Taxonomy"),
               dataTableOutput("taxonomy_data")
             )
@@ -95,13 +90,13 @@ ui <- fluidPage(
 # server ----
 
 server <- function(input, output) {
-
   data_lists <- reactive({
     get_acc_info(
-    species_select = input$combo$text,
-    accessions_long = ftolr::accessions_long,
-    accessions_wide = ftolr::accessions_wide,
-    match_results_resolved_all = ftolr::ftol_match_results)
+      species_select = input$combo$text,
+      accessions_long = ftolr::accessions_long,
+      accessions_wide = ftolr::accessions_wide,
+      match_results_resolved_all = ftolr::ftol_match_results
+    )
   })
 
   output$acc_data <- renderDataTable(
@@ -131,7 +126,6 @@ server <- function(input, output) {
       )
     )
   })
-
 }
 
 shinyApp(ui = ui, server = server)
